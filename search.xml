@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Windows11还原默认打开图标</title>
+      <link href="/posts/760485ac/"/>
+      <url>/posts/760485ac/</url>
+      
+        <content type="html"><![CDATA[<p>废话不多说，通过修改注册表还原Windows11默认打开文件图标，亲测有效</p><p>Win+R输入<code>regedit</code>打开注册表</p><p>找到<code>计算机\HKEY_CLASSES_ROOT\</code>这个目录，再找到被修改图标对应的后缀名，右键删掉整个文件夹</p><p>找到如下路径的<code>计算机\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\</code>找到被修改图标对应的后缀名，右键删掉整个文件夹</p><p>到任务管理器重启资源管理器，就可以了</p><p>Windows10也差不多</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Win11 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 🪟Win11 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>获取 Pixiv refresh_token</title>
+      <link href="/posts/dcedddd5/"/>
+      <url>/posts/dcedddd5/</url>
+      
+        <content type="html"><![CDATA[<p>注意本机需要安装python环境</p><h3 id="第一步下载chromedriver"><a href="#第一步下载chromedriver" class="headerlink" title="第一步下载chromedriver"></a>第一步下载<code>chromedriver</code></h3><div class="tag link"><a class="link-card" title="Chromedriver" href="https://registry.npmmirror.com/binary.html?path=chromedriver/"><div class="left"><img src="/img/siteicon/favicon.ico"/></div><div class="right"><p class="text">Chromedriver</p><p class="url">https://registry.npmmirror.com/binary.html?path=chromedriver/</p></div></a></div><p>如果没有找到对应的版本号，找个相近就可以了下载如果是windows就选择chromedriver_win32.zip</p><h3 id="第二步下载脚本"><a href="#第二步下载脚本" class="headerlink" title="第二步下载脚本"></a>第二步下载<code>脚本</code></h3><div class="tag link"><a class="link-card" title="pixiv_auth.py" href="https://gist.githubusercontent.com/ZipFile/c9ebedb224406f4f11845ab700124362/raw/c3e2fe2a394a314ea9a22ad1438fc5d691babb8e/pixiv_auth.py"><div class="left"><img src="/img/siteicon/favicon.ico"/></div><div class="right"><p class="text">pixiv_auth.py</p><p class="url">https://gist.githubusercontent.com/ZipFile/c9ebedb224406f4f11845ab700124362/raw/c3e2fe2a394a314ea9a22ad1438fc5d691babb8e/pixiv_auth.py</p></div></a></div><p><code>下载的文件要放在同一个目录</code></p><h3 id="第三步安装requests模块"><a href="#第三步安装requests模块" class="headerlink" title="第三步安装requests模块"></a>第三步安装<code>requests</code>模块</h3><p>Windows端</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install requests</span><br></pre></td></tr></table></figure><p>其他客服端请参考</p><p><a href="https://stackoverflow.com/questions/17309288/importerror-no-module-named-requests">https://stackoverflow.com/questions/17309288/importerror-no-module-named-requests</a></p><h3 id="第四步在Python安装selenium"><a href="#第四步在Python安装selenium" class="headerlink" title="第四步在Python安装selenium"></a>第四步在Python安装<code>selenium</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install selenium</span><br></pre></td></tr></table></figure><p>不要开代理，如果还是报错建议用手机开热点试试</p><h3 id="第五步"><a href="#第五步" class="headerlink" title="第五步"></a>第五步</h3><h5 id="目录下打开cmd输入"><a href="#目录下打开cmd输入" class="headerlink" title="目录下打开cmd输入"></a>目录下打开cmd输入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python pixiv_auth.py login</span><br></pre></td></tr></table></figure><p>浏览器弹出Pixiv 登录页面</p><p>国内用户需要开代理，还需要修改pixiv_auth.py，这里可以直接复制我的，如果代理端口不是7890则需要修改<code>82</code>行端口号</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"></span><br><span class="line">from argparse import ArgumentParser</span><br><span class="line">from base64 import urlsafe_b64encode</span><br><span class="line">from hashlib import sha256</span><br><span class="line">from pprint import pprint</span><br><span class="line">from secrets import token_urlsafe</span><br><span class="line">from sys import exit</span><br><span class="line">from urllib.parse import urlencode</span><br><span class="line">from webbrowser import open as open_url</span><br><span class="line"></span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line"># Latest app version can be found using GET /v1/application-info/android</span><br><span class="line">USER_AGENT = &quot;PixivAndroidApp/5.0.234 (Android 11; Pixel 5)&quot;</span><br><span class="line">REDIRECT_URI = &quot;https://app-api.pixiv.net/web/v1/users/auth/pixiv/callback&quot;</span><br><span class="line">LOGIN_URL = &quot;https://app-api.pixiv.net/web/v1/login&quot;</span><br><span class="line">AUTH_TOKEN_URL = &quot;https://oauth.secure.pixiv.net/auth/token&quot;</span><br><span class="line">CLIENT_ID = &quot;MOBrBDS8blbauoSck0ZfDbtuzpyT&quot;</span><br><span class="line">CLIENT_SECRET = &quot;lsACyCD94FhDUtGTXi3QzcFE2uU1hqtDaKeqrdwj&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def s256(data):</span><br><span class="line">    &quot;&quot;&quot;S256 transformation method.&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    return urlsafe_b64encode(sha256(data).digest()).rstrip(b&quot;=&quot;).decode(&quot;ascii&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def oauth_pkce(transform):</span><br><span class="line">    &quot;&quot;&quot;Proof Key for Code Exchange by OAuth Public Clients (RFC7636).&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    code_verifier = token_urlsafe(32)</span><br><span class="line">    code_challenge = transform(code_verifier.encode(&quot;ascii&quot;))</span><br><span class="line"></span><br><span class="line">    return code_verifier, code_challenge</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def print_auth_token_response(response):</span><br><span class="line">    data = response.json()</span><br><span class="line"></span><br><span class="line">    try:</span><br><span class="line">        access_token = data[&quot;access_token&quot;]</span><br><span class="line">        refresh_token = data[&quot;refresh_token&quot;]</span><br><span class="line">    except KeyError:</span><br><span class="line">        print(&quot;error:&quot;)</span><br><span class="line">        pprint(data)</span><br><span class="line">        exit(1)</span><br><span class="line"></span><br><span class="line">    print(&quot;access_token:&quot;, access_token)</span><br><span class="line">    print(&quot;refresh_token:&quot;, refresh_token)</span><br><span class="line">    print(&quot;expires_in:&quot;, data.get(&quot;expires_in&quot;, 0))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def login():</span><br><span class="line">    code_verifier, code_challenge = oauth_pkce(s256)</span><br><span class="line">    login_params = &#123;</span><br><span class="line">        &quot;code_challenge&quot;: code_challenge,</span><br><span class="line">        &quot;code_challenge_method&quot;: &quot;S256&quot;,</span><br><span class="line">        &quot;client&quot;: &quot;pixiv-android&quot;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    open_url(f&quot;&#123;LOGIN_URL&#125;?&#123;urlencode(login_params)&#125;&quot;)</span><br><span class="line"></span><br><span class="line">    try:</span><br><span class="line">        code = input(&quot;code: &quot;).strip()</span><br><span class="line">    except (EOFError, KeyboardInterrupt):</span><br><span class="line">        return</span><br><span class="line"></span><br><span class="line">    response = requests.post(</span><br><span class="line">        AUTH_TOKEN_URL,</span><br><span class="line">        data=&#123;</span><br><span class="line">            &quot;client_id&quot;: CLIENT_ID,</span><br><span class="line">            &quot;client_secret&quot;: CLIENT_SECRET,</span><br><span class="line">            &quot;code&quot;: code,</span><br><span class="line">            &quot;code_verifier&quot;: code_verifier,</span><br><span class="line">            &quot;grant_type&quot;: &quot;authorization_code&quot;,</span><br><span class="line">            &quot;include_policy&quot;: &quot;true&quot;,</span><br><span class="line">            &quot;redirect_uri&quot;: REDIRECT_URI,</span><br><span class="line">        &#125;,</span><br><span class="line">        headers=&#123;&quot;User-Agent&quot;: USER_AGENT&#125;,</span><br><span class="line">        proxies=&#123;</span><br><span class="line">             &#x27;https&#x27;: &#x27;http://127.0.0.1:7890&#x27; </span><br><span class="line">        &#125;</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    print_auth_token_response(response)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def refresh(refresh_token):</span><br><span class="line">    response = requests.post(</span><br><span class="line">        AUTH_TOKEN_URL,</span><br><span class="line">        data=&#123;</span><br><span class="line">            &quot;client_id&quot;: CLIENT_ID,</span><br><span class="line">            &quot;client_secret&quot;: CLIENT_SECRET,</span><br><span class="line">            &quot;grant_type&quot;: &quot;refresh_token&quot;,</span><br><span class="line">            &quot;include_policy&quot;: &quot;true&quot;,</span><br><span class="line">            &quot;refresh_token&quot;: refresh_token,</span><br><span class="line">        &#125;,</span><br><span class="line">        headers=&#123;&quot;User-Agent&quot;: USER_AGENT&#125;,</span><br><span class="line">    )</span><br><span class="line">    print_auth_token_response(response)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    parser = ArgumentParser()</span><br><span class="line">    subparsers = parser.add_subparsers()</span><br><span class="line">    parser.set_defaults(func=lambda _: parser.print_usage())</span><br><span class="line">    login_parser = subparsers.add_parser(&quot;login&quot;)</span><br><span class="line">    login_parser.set_defaults(func=lambda _: login())</span><br><span class="line">    refresh_parser = subparsers.add_parser(&quot;refresh&quot;)</span><br><span class="line">    refresh_parser.add_argument(&quot;refresh_token&quot;)</span><br><span class="line">    refresh_parser.set_defaults(func=lambda ns: refresh(ns.refresh_token))</span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    args.func(args)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>打开浏览器操作台F12，切换到网络选项卡，勾选“保留日志”，并在过滤文本框中输入 <code>callback?</code>，复制code 如同所示</p><p><img src="https://assets.adunm.top/typora/blog/202301212323646.webp" alt=""></p><p>将code填入终端</p><p><img src="https://assets.adunm.top/typora/blog/202301212323174.webp" alt="image-20230111222354479"></p><p>返回access_token: xxx refresh_token: xxx</p><p><code>code</code> 的有效期很短，因此请尽快操作。</p><p>大功告成</p><p>有疑问欢迎到评论区讨论 </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Pixiv </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 🎨 Pixiv </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>微信公众号早安推送教程</title>
+      <link href="/posts/99f6b1e1/"/>
+      <url>/posts/99f6b1e1/</url>
+      
+        <content type="html"><![CDATA[<p>原教程:小红书@猪咪不是猪</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> WeChat </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 📮 WeChat </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Ubuntu 20.04换源教程</title>
+      <link href="/posts/99f6b1e6/"/>
+      <url>/posts/99f6b1e6/</url>
+      
+        <content type="html"><![CDATA[<div class="table-container"><table><thead><tr><th>系统环境</th></tr></thead><tbody><tr><td>ubuntu 20.04</td></tr></tbody></table></div><h3 id="这里我们选用阿里源做演示"><a href="#这里我们选用阿里源做演示" class="headerlink" title="这里我们选用阿里源做演示"></a>这里我们选用阿里源做演示</h3><p><a href="https://developer.aliyun.com/mirror/" title="阿里巴巴开源镜像站">阿里巴巴开源镜像站</a><br><a href="https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/" title="清华大学开源软件镜像站">清华大学开源软件镜像站</a><br><a href="https://mirrors.ustc.edu.cn/repogen/" title="中科大镜像源">中科大镜像源</a><br>ubuntu 20.04(focal) 配置如下</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"># deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse</span><br><span class="line"># deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure><h3 id="把默认的源地址先备份一下"><a href="#把默认的源地址先备份一下" class="headerlink" title="把默认的源地址先备份一下"></a>把默认的源地址先备份一下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources_init.list</span><br></pre></td></tr></table></figure><h3 id="用vim编辑源文件"><a href="#用vim编辑源文件" class="headerlink" title="用vim编辑源文件"></a>用vim编辑源文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apt/sources.list</span><br></pre></td></tr></table></figure><div class="note warning simple"><p>删掉原来的源，添加的阿里源，注意 sources.list 文件只能放一种源</p></div><div class="note info simple"><p>在英文模式下按 i 键进行编辑，保存 ESC+Shitf+: 然后输入：wq 保存</p></div><h3 id="更新镜像源"><a href="#更新镜像源" class="headerlink" title="更新镜像源"></a>更新镜像源</h3><p>不会删除任何软件包，更新版本的软件包被升级，没有任何被删除。</p><p>在后者中，安装了一些较新的包，并删除了一些以满足某些依赖性。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line">sudo apt-get dist-upgrade</span><br></pre></td></tr></table></figure><h3 id="更新软件"><a href="#更新软件" class="headerlink" title="更新软件"></a>更新软件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure><h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><div class="note success simple"><p>success 到这步源就全部更新完成了</p></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 🖥️ Ubuntu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>安装 Ward 服务器监控面板</title>
+      <link href="/posts/4ae7ered/"/>
+      <url>/posts/4ae7ered/</url>
+      
+        <content type="html"><![CDATA[<details class="folding-tag" cyan open><summary> Ward 监控面板简介 </summary>              <div class='content'>              <p>译：<br>Ward 是一个简单而简约的服务器监控工具。Ward 支持自适应设计系统。此外，它还支持深色主题。如果您想查看漂亮的仪表板而不是查看一堆数字和图表，它仅显示主要信息并且可以使用。Ward 在所有流行的操作系统上运行良好，因为它使用<a href="https://github.com/oshi/oshi">OSHI</a>。</p><p><strong>所有功能测试：</strong> <code>Windows</code> <code>Linux</code></p><p><details class="folding-tag" ><summary> 效果预览 </summary>              <div class='content'>              <p><img src="https://cdn.jsdelivr.net/gh/Rudolf-Barbu/Ward@1.8.8/images/preview.png" alt=""></p>              </div>            </details></p><p>项目地址：<a href="https://github.com/Rudolf-Barbu/Ward">https://github.com/Rudolf-Barbu/Ward</a></p><p>本项目使用Docker搭建</p>              </div>            </details><details class="folding-tag" yellow open><summary> 环境配置 </summary>              <div class='content'>              <h4 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://get.daocloud.io/docker | sh</span><br><span class="line"># 查看版本</span><br><span class="line">docker --version</span><br></pre></td></tr></table></figure><h4 id="安装docker-compose"><a href="#安装docker-compose" class="headerlink" title="安装docker-compose"></a>安装docker-compose</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 安装docker-compose</span><br><span class="line">curl -L https://get.daocloud.io/docker/compose/releases/download/v2.1.1/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose</span><br><span class="line"># 查看版本</span><br><span class="line">docker-compose --version</span><br><span class="line"># 添加执行权限</span><br><span class="line">chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure><p>为了方便以后项目管理为 docker 新建一个文件夹<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p data/docker_data</span><br></pre></td></tr></table></figure></p><h3 id="安装Ward"><a href="#安装Ward" class="headerlink" title="安装Ward"></a>安装Ward</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 进入 docker_data 目录</span><br><span class="line">cd data/docker_data</span><br><span class="line">创建 Ward 文件夹</span><br><span class="line">mkdir Ward</span><br><span class="line"># 进入 Ward 目录</span><br><span class="line">cd Ward</span><br><span class="line"># 克隆项目到本地</span><br><span class="line">git clone https://github.com/Rudolf-Barbu/Ward.git</span><br><span class="line"># 进入Ward</span><br><span class="line">cd Ward</span><br><span class="line"># 构建镜像</span><br><span class="line">docker build . --tag ward</span><br></pre></td></tr></table></figure><p>运行下面里面，可以到本地改好后再运行</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name ward -p 4000:4000 \</span><br><span class="line">-p 自定义端口号:自定义端口号 \</span><br><span class="line">--privileged=true \</span><br><span class="line">--restart always \</span><br><span class="line">ward:latest</span><br></pre></td></tr></table></figure><ol><li>通过 <a href="http://服务器IP:4000/">http://服务器IP:4000/</a> 访问配置面板</li><li>Server Name    面板标题</li><li>ADDITIONAL SETTINGS    主题切换</li><li>Application Port   刚才填的 <span class='p red'>自定义端口号</span></li></ol><div class="note warning flat"><p>记得把需要的端口打开</p></div><p><img src="https://npm.elemecdn.com/ylan-blog/images/img/2.webp" alt=""></p>              </div>            </details><details class="folding-tag" cyan open><summary> nginx反向代理 </summary>              <div class='content'>              <h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 443 ssl http2;</span><br><span class="line">  server_name  域名;</span><br><span class="line">  ssl_certificate     cert/证书位置.pem;</span><br><span class="line">  ssl_certificate_key cert/证书位置.key;</span><br><span class="line"></span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_set_header   X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_pass         http://localhost:自定义端口/;</span><br><span class="line">    proxy_http_version 1.1;</span><br><span class="line">    proxy_set_header   Upgrade $http_upgrade;</span><br><span class="line">    proxy_set_header   Connection &quot;upgrade&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name 域名.com; </span><br><span class="line">    rewrite ^(.*)$ https://$host$1; #将所有HTTP请求通过rewrite指令重定向到HTTPS。</span><br><span class="line">    location / &#123;</span><br><span class="line">        index index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>              </div>            </details>]]></content>
+      
+      
+      <categories>
+          
+          <category> Ward </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ⚙ Ward </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>最新自动续订E5</title>
+      <link href="/posts/4aa8ab/"/>
+      <url>/posts/4aa8ab/</url>
+      
+        <content type="html"><![CDATA[<details class="folding-tag" yellow><summary> 参考教程 </summary>              <div class='content'>              <ul><li><a href="https://qyi.io/archives/687.html">E5 自动订阅程序[已开源]</a></li></ul>              </div>            </details><h2 id="原作者说明"><a href="#原作者说明" class="headerlink" title="原作者说明"></a>原作者说明</h2><blockquote><p>此程序部署在我的服务器上，每隔两小时会自动调用outlook api 获取邮件列表</p><p>对于信息: 只会保存必要的 client_id、client_secret，其他任何内容都不会保存，</p><p>会读取授权的outlook账号邮箱邮件，但不会保存任何信息，仅仅是调用api。</p><p>请单独创建一个同域 E5 子账号进行授权，不要使用此账号进行发送、接收个人邮件，以免发生误会。</p></blockquote><h3 id="需要准备"><a href="#需要准备" class="headerlink" title="需要准备"></a>需要准备</h3><ol><li>E5账号</li><li>Github账号</li><li>申请E5子账号(该账号仅用于E5续订)</li></ol><h3 id="登录Microsoft-Azure"><a href="#登录Microsoft-Azure" class="headerlink" title="登录Microsoft Azure"></a>登录Microsoft Azure</h3><p>打开登录<a href="https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps">Microsoft Azure</a>搜索 <kbd>应用注册</kbd>(<wavy>该教程使用E5主账号</wavy>)</p><p><img src="https://assets.adunm.top/typora/blog/202211122145898.webp?x-oss-process=style/sy" alt=""></p><h3 id="点击-新注册"><a href="#点击-新注册" class="headerlink" title="点击 新注册"></a>点击 新注册</h3><div class="note warning flat"><p><strong>1、受支持的帐户类型</strong> ，请选择第一个，<strong>仅此组织目录(仅 xxx - 单一租户)中的帐户</strong></p><p>2、重定向 URI (可选) 暂时不要填写。</p></div><p><img src="https://assets.adunm.top/typora/blog/202301161258434.webp?x-oss-process=style/sy" alt=""></p><h3 id="点击注册后记录以下信息"><a href="#点击注册后记录以下信息" class="headerlink" title="点击注册后记录以下信息:"></a>点击注册后记录以下信息:</h3><p><strong>1、应用程序(客户端)ID</strong></p><p><strong>2、目录(租户) ID</strong></p><p><strong>3、客户端密码（在下面获取）</strong></p><p><img src="https://assets.adunm.top/typora/blog/202301161258436.webp?x-oss-process=style/sy" alt=""></p><h3 id="申请证书和密钥"><a href="#申请证书和密钥" class="headerlink" title="申请证书和密钥"></a>申请证书和密钥</h3><p>点击→证书和密钥→新客服端密码→说明可以不用填，截至期限选择24个月(别在意这些，谁也不知道一年后微软的策略会不会变，一年换一次密钥也不麻烦)</p><p><img src="https://assets.adunm.top/typora/blog/202211122145109.webp?x-oss-process=style/sy" alt=""></p><div class="note warning flat"><p>复制值，注意不是机密 ID</p><p>保存好以上面个key（客户端密码），一会需要用到。</p></div><h3 id="配置api权限"><a href="#配置api权限" class="headerlink" title="配置api权限"></a>配置api权限</h3><ol><li><p>选择 API 权限 </p></li><li><p>选择微软图表</p></li><li><p>搜索mail，选择下面四个</p></li><li><p>最后选择添加权限</p></li></ol><p><img src="https://assets.adunm.top/typora/blog/202301161258574.webp?x-oss-process=style/sy" alt=""></p><p>同时点击 <strong>代表XXX授予管理员同意</strong></p><p><img src="https://assets.adunm.top/typora/blog/202301161258186.webp?x-oss-process=style/sy" alt=""></p><p>这个时候api的配置就算完成了</p><h3 id="打开E5续订使用Github账号登录"><a href="#打开E5续订使用Github账号登录" class="headerlink" title="打开E5续订使用Github账号登录"></a>打开<a href="https://e5.qyi.io/login">E5续订</a>使用Github账号登录</h3><p>进入主页面后，请先获取回调地址，每个人的地址都不同，请不要泄露以及复制别人的。</p><p>这一步骤是为了减少被判定为钓鱼应用的风险。</p><p>点击 获取回调地址 </p><p><img src="https://assets.adunm.top/typora/blog/202301161258641.webp?x-oss-process=style/sy" alt=""></p><p>将这个地址复制，粘贴到 azure 面板，步骤如下</p><p><img src="https://assets.adunm.top/typora/blog/202301161258554.webp?x-oss-process=style/sy" alt=""></p><p>把 获取回调地址 填入 web 重定向 URI 中</p><p><img src="https://assets.adunm.top/typora/blog/202301161258605.webp?x-oss-process=style/sy" alt=""></p><p>返回E5续订</p><p>新建应用</p><p>把刚才复制<strong>应用程序(客户端)ID、客户端密码</strong> <strong>、租户ID</strong> 填入</p><p><img src="https://assets.adunm.top/typora/blog/202301161258617.webp?x-oss-process=style/sy" alt=""></p><p>此时会跳转到 microsoftonline Auth2.0授权页面，在这里请注意使用同一个域下的空账号(子账号)进行授权。</p><p>新建子账号一直默认就好了，这里不做演示</p><p><img src="https://assets.adunm.top/typora/blog/202301161258018.webp?x-oss-process=style/sy"  /></p><p>授权成功后过几个小时打开<a href="https://e5.qyi.io/">续订E5</a>点击 日志 显示成功</p><p><img src="https://assets.adunm.top/typora/blog/202301161259667.webp?x-oss-process=style/sy" alt=""></p><h3 id="三个月后。。。"><a href="#三个月后。。。" class="headerlink" title="三个月后。。。"></a>三个月后。。。</h3><p><img src="https://assets.adunm.top/typora/blog/202301082038924.webp?x-oss-process=style/sy" alt=""></p><h4 id="有问题欢迎到评论区讨论"><a href="#有问题欢迎到评论区讨论" class="headerlink" title="有问题欢迎到评论区讨论"></a>有问题欢迎到评论区讨论</h4>]]></content>
+      
+      
+      <categories>
+          
+          <category> Office </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 🪪 Office </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>解决 Vercel 在国内无法访问</title>
+      <link href="/posts/4a17b151/"/>
+      <url>/posts/4a17b151/</url>
+      
+        <content type="html"><![CDATA[<p>译</p><blockquote><p>我们进行了更改，以确保 vercel.com 和 vercel.app 域可以在中国境内被屏蔽后再次从中国访问。</p><p>对于在 Vercel 上使用自定义域的受影响用户，可以通过将指向 Vercel 的 A 记录值从 76.76.21.21 更改为 76.223.126.88 来缓解该问题。</p><p>虽然我们已经解决了影响 CNAME 记录的问题，但我们仍然建议将 cname.vercel-dns.com 更改为 cname-china.vercel-dns.com 以获得额外的冗余。</p></blockquote><h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>给Vercel绑定自己的域名<br><img src="https://assets.adunm.top/typora/blog/wsns.webp" alt=""></p><h4 id="到域名商添加记录"><a href="#到域名商添加记录" class="headerlink" title="到域名商添加记录"></a>到域名商添加记录</h4><p>A记录修改为：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">76.223.126.88</span><br></pre></td></tr></table></figure><br>cname记录修改为：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cname-china.vercel-dns.com （推荐）</span><br></pre></td></tr></table></figure><br><img src="https://assets.adunm.top/typora/blog/wqwqe.webp" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 实用 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 🌐 Vercel </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>搭建onedrive-vercel-index云盘</title>
+      <link href="/posts/4a7ered/"/>
+      <url>/posts/4a7ered/</url>
+      
+        <content type="html"><![CDATA[<details class="folding-tag" cyan open><summary> 简介 </summary>              <div class='content'>              <p>使用 onedrive-vercel-index 在 OneDrive 中展示、共享、预览和下载文件</p><ul><li>完全免费托管💸</li><li>超级快⚡反应灵敏💦</li><li>设置时间不到 15 分钟⏱️</li><li>高度可定制⚒️</li><li>托管文件与图片🧩</li></ul><p><details class="folding-tag" ><summary> 效果预览 </summary>              <div class='content'>              <p><img src="https://assets.adunm.top/typora/blog/202212221327586.webp" alt=""></p>              </div>            </details></p><p>项目地址：<a href="https://github.com/spencerwooo/onedrive-vercel-index">https://github.com/spencerwooo/onedrive-vercel-index</a></p><p>本项目使用 <a href="https://vercel.com/"><strong>vercel</strong></a> 托管</p><p>使用免费的 <a href="https://upstash.com/"><strong>Upstash</strong></a> 作为Redis 数据库</p>              </div>            </details><details class="folding-tag" cyan open><summary> 前言 </summary>              <div class='content'>              <p>本教程推荐使用E5账号登录OneDrive，每个账号享有5T容量</p><p>需要准备</p><ol><li>OneDrive账号</li><li>Vercel</li><li>Upstash</li><li>Microsoft Azure</li></ol><p>这是我搭建的：<a href="https://cloud.adunm.top/">https://cloud.adunm.top/</a></p><div class="tag link"><a class="link-card" title="白嫖正版Office 365+OneDrive 5T云存储" href="https://adunm.top/posts/6d79824e/"><div class="left"><img src="/img/siteicon/favicon.ico"/></div><div class="right"><p class="text">白嫖正版Office 365+OneDrive 5T云存储</p><p class="url">https://adunm.top/posts/6d79824e/</p></div></a></div>              </div>            </details><details class="folding-tag" cyan open><summary> 正式安装 </summary>              <div class='content'>              <p>把项目导入存储库</p><p><img src="https://assets.adunm.top/typora/blog/202212221327407.webp" alt="2"></p><p>把项目地址粘贴进去，仓库名字随意，选择选择私人仓库，避免将一些密钥公布出去</p><p><img src="https://assets.adunm.top/typora/blog/202212221327980.webp" alt="3"></p><p>点击 <kbd>Begin import</kbd></p><p>把项目克隆到本地</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/spencerwooo/onedrive-vercel-index.git</span><br></pre></td></tr></table></figure><h3 id="修改config"><a href="#修改config" class="headerlink" title="修改config"></a>修改config</h3><p>主要修改<code>\onedrive-vercel-index\config</code>下的两个文件</p><p><img src="https://assets.adunm.top/typora/blog/202212221327088.webp" alt="4"></p><ul><li><p><code>userPrincipalName</code> - 是用来在 OAuth 步骤时认证你的个人信息的。通常是你的 <strong>微软账户邮箱</strong>。</p></li><li><p><code>baseDirectory</code> - 是你要分享的 OneDrive 目录。你必须保证此目录有效且与此参数一致。（你可以直接在 OneDrive 内创建一个叫做 <code>Public</code> 文件夹，并将此项设置为 <code>/Public</code>。）</p></li><li><p><code>icon</code> - 导航栏内标题左侧的网站图标</p></li><li><p><code>title</code> - 您网站的名称。 与您的图标一起展示。</p></li></ul><p><img src="https://assets.adunm.top/typora/blog/202212221327857.webp" alt="5"><br>打开<a href="https://portal.azure.com/">Microsoft Azure</a>使用刚才填的OneDrive账号<br>搜索 应用注册 点击 新注册</p><p>名称随意，按照下方图片内容填写</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost</span><br></pre></td></tr></table></figure><p><img src="https://assets.adunm.top/typora/blog/202212221327991.webp" alt=""></p><p>修改<code>\onedrive-vercel-index\config\api.config.js</code>配置文件<br>修改两处就行了<code>clientId</code>和<code>obfuscatedClientSecret</code></p><h4 id="获取clientId："><a href="#获取clientId：" class="headerlink" title="获取clientId："></a>获取clientId：</h4><p>创建好后复制 应用程序(客户端) ID 打开\onedrive-vercel-index\config\api.config.js文件，把clientId替换成复制的应用程序(客户端) ID</p><p><img src="https://assets.adunm.top/typora/blog/202212221327679.webp" alt="7"></p><h4 id="获取obfuscatedClientSecret："><a href="#获取obfuscatedClientSecret：" class="headerlink" title="获取obfuscatedClientSecret："></a>获取obfuscatedClientSecret：</h4><p>点击 证书和密码 再点击 新客服端密码 名称可以不填，截至期限选24个月</p><p><img src="https://assets.adunm.top/typora/blog/202212221327164.webp" alt="image-20221120024638279"></p><p>复制 值 不是 机密 ID</p><p>打开<a href="https://ovi.swo.moe/zh/docs/advanced#%E4%BF%AE%E6%94%B9-apiconfigjs">AES加密</a>把 值 进行AES加密</p><p><img src="https://assets.adunm.top/typora/blog/202212221327341.webp" alt="21"></p><p>复制加密值打开<code>\onedrive-vercel-index\config\api.config.js</code>把<code>obfuscatedClientSecret</code>替换成加密值</p><p><img src="https://assets.adunm.top/typora/blog/202212221327682.webp" alt="9"></p><p>切换到Microsoft Azure添加 API 权限</p><p><img src="https://assets.adunm.top/typora/blog/202212221327434.webp" alt="9"></p><p>点击 添加权限 选择Microsoft Graph 再选择 委托的权限</p><p><img src="https://assets.adunm.top/typora/blog/202212221327508.webp" alt="image-20221120033254071"></p><p>添加加OpenId 权限 (1)和Files (2)</p><p><img src="https://assets.adunm.top/typora/blog/202212221327703.webp" alt="10"></p><p><img src="https://assets.adunm.top/typora/blog/202212221327875.webp" alt="11"></p><h4 id="推送至Github"><a href="#推送至Github" class="headerlink" title="推送至Github"></a>推送至Github</h4><p>基本上算是修改完了，可以把项目推送到github仓库</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m “First commit”</span><br><span class="line">git push</span><br></pre></td></tr></table></figure><p><img src="https://assets.adunm.top/typora/blog/202212221327273.webp" alt="8"></p><h4 id="部署到Vercel"><a href="#部署到Vercel" class="headerlink" title="部署到Vercel"></a>部署到Vercel</h4><p>登录<a href="https://vercel.com/">Vercel</a>,没有账号的自行注册</p><p>把项目仓库导入到Vercel</p><p>添加环境变量</p><p>创建一个 Redis 数据库，并且将数据库的访问链接填写到 Vercel 的 <code>REDIS_URL</code> 环境变量里。Redis 数据库是用于存储在 OAuth 时获取的 <code>access_tokens</code> 与 <code>refresh_tokens</code> 的。</p><ul><li><p>我们推荐使用 <strong>Upstash</strong> ，它完全免费，并且与 Vercel 深度合作</p></li><li><p>你可以使用你自己的 Redis 数据库，只要有 Vercel 能用的访问链接就行。</p></li></ul><h4 id="登录Upstash账号，没有的自行注册"><a href="#登录Upstash账号，没有的自行注册" class="headerlink" title="登录Upstash账号，没有的自行注册"></a>登录Upstash账号，没有的自行注册</h4><p>点击 Create database 名称随意，根据下方图片内容填写</p><p><img src="https://assets.adunm.top/typora/blog/202212221327975.webp" alt="12"></p><p>复制redis-cli —tls -u后面的内容，复制全部后再修改</p><p><img src="https://assets.adunm.top/typora/blog/202212221327995.webp" alt="13"></p><p>修改链接</p><p><img src="https://assets.adunm.top/typora/blog/202212221328166.webp" alt="14"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rediss://:xxx...@some-thing-like-35533.upstash.io:35533</span><br></pre></td></tr></table></figure><p>转到vercel根据下面填写，Value按照自己Upstash数据库填，完事后点击Add</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Name                Value (Will Be Encrypted)</span><br><span class="line"></span><br><span class="line">REDIS_URL           rediss://:xxx...@some-thing-like-35533.upstash.io:35533</span><br></pre></td></tr></table></figure><p><img src="https://assets.adunm.top/typora/blog/202212221328064.webp" alt="15"></p><p>最后就可以部署了</p><p>浏览器输入vercel给的域名就可以开始认证了</p><p><img src="https://assets.adunm.top/typora/blog/202212221328183.webp" alt="20"></p><p>点击 继续进行OAuth</p><p>打开获取授权码链接，登录自己的OneDrive账号!</p><p>登录后复制返回的值</p><p><img src="https://assets.adunm.top/typora/blog/202212221328942.webp" alt="21"></p><p>粘贴到</p><p> <img src="https://assets.adunm.top/typora/blog/202212221328064.webp" alt="21"></p><p>点击 存储tokens 就搭建好了QWQ</p><p><img src="https://assets.adunm.top/typora/blog/202212221328530.webp" alt="20"></p><h3 id="托管文件与图片"><a href="#托管文件与图片" class="headerlink" title="托管文件与图片"></a>托管文件与图片</h3><p>是，它可以做图床（或者文件网盘），你可以将它生成的文件直链嵌入到任何其他网站上。</p><p>下面的 GIF 就是个例子：</p><p><img src="https://drive.swo.moe/api?path=/%F0%9F%A5%9F%20Some%20test%20files/nyancat.gif&amp;raw=true" alt="nyan cat"></p><p>你可以在文件列表或预览页面复制直链，或者按照下面的格式生成：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![nyan cat](https://drive.swo.moe/api?path=/%F0%9F%A5%9F%20Some%20test%20files/nyancat.gif&amp;raw=true)</span><br></pre></td></tr></table></figure><p>如有问题请到评论区留言</p>              </div>            </details>]]></content>
+      
+      
+      <categories>
+          
+          <category> 云盘 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ☁ OneDrive </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>白嫖正版Office 365+OneDrive 5T云存储</title>
+      <link href="/posts/6d79824e/"/>
+      <url>/posts/6d79824e/</url>
+      
+        <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Office365开发版E5是为开发人员提供的，是微软的官方活动，申请Office 365开发者计划可以获得为期3个月的免费Office365 E5。 而E5计划就包含了25个用于所有Office 365 应用的许可证。</p><h4 id="申请账号"><a href="#申请账号" class="headerlink" title="申请账号"></a>申请账号</h4><p>申请<a href="https://developer.microsoft.com/zh-cn/microsoft-365/dev-program">office E5开发者账号</a>用自己微软账号登录，没有的可以用QQ邮箱申请。申请<a href="https://support.microsoft.com/zh-cn/account-billing/%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84-microsoft-%E5%B8%90%E6%88%B7-a84675c3-3e9e-17cf-2911-3d56b15c0aaf">Microsoft 帐户</a></p><p><img src="https://assets.adunm.top/typora/blog/1.webp" alt=""></p><h4 id="填写基本信息"><a href="#填写基本信息" class="headerlink" title="填写基本信息"></a>填写基本信息</h4><p>国家地区、基本信息就不说了</p><p><img src="https://assets.adunm.top/typora/blog/2.webp" alt=""></p><h4 id="选择-个人项目"><a href="#选择-个人项目" class="headerlink" title="选择 个人项目"></a>选择 个人项目</h4><p><img src="https://assets.adunm.top/typora/blog/3.webp" alt=""></p><h4 id="选择应用"><a href="#选择应用" class="headerlink" title="选择应用"></a>选择应用</h4><p>建议全选</p><p><img src="https://assets.adunm.top/typora/blog/4.webp" alt=""></p><h4 id="选择-即使沙盒"><a href="#选择-即使沙盒" class="headerlink" title="选择 即使沙盒"></a>选择 即使沙盒</h4><p><img src="https://assets.adunm.top/typora/blog/5.webp" alt=""></p><h4 id="选择填写基本信息"><a href="#选择填写基本信息" class="headerlink" title="选择填写基本信息"></a>选择填写基本信息</h4><p>数据中心选择新加坡 Asia Pacific + South Asia (Singapore)，用户名密码根据自己填写即可</p><p><img src="https://assets.adunm.top/typora/blog/6.webp" alt=""></p><h4 id="验证手机号"><a href="#验证手机号" class="headerlink" title="验证手机号"></a>验证手机号</h4><p>验证手机号后E5账号就申请成功了，使用E5管理员账号登录office就激活成功了</p><p><img src="https://assets.adunm.top/typora/blog/7.webp" alt=""></p><h4 id="查看云存储"><a href="#查看云存储" class="headerlink" title="查看云存储"></a>查看云存储</h4><p>查看OneDrive 5T云存储，点击<a href="https://www.office.com/">转到订阅</a>，注意这里要使用刚才注册的E5账号登录<br>点击 管理</p><p><img src="https://assets.adunm.top/typora/blog/8.webp" alt=""></p><p>选择 用户—活跃用户—点击主账号—点击OneDrive‎—没有5120G点击下面 编辑 自行设置</p><p><img src="https://assets.adunm.top/typora/blog/9.webp" alt=""></p><div class="note warning simple"><p>默认onedrive容量是1T，但是可以通过设置更改为5T</p></div><div class="note warning simple"><p>Office E5订阅第一次订阅有效期是90天</p></div><a class="btn-beautify block pink right larger" href="/posts/4aa8ab/"   title="自动续订E5账号"><i class="far fa-hand-point-right"></i><span>自动续订E5账号</span></a>]]></content>
+      
+      
+      <categories>
+          
+          <category> Office </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 🪪 Office </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>配置Nginx禁止IP访问，只允许域名访问</title>
+      <link href="/posts/4aa8abr/"/>
+      <url>/posts/4aa8abr/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>nginx配置防止域名恶意解析</p><p>将所有HTTP请求通过rewrite指令重定向到HTTPS</p></blockquote><h4 id="找到nginx配置文件"><a href="#找到nginx配置文件" class="headerlink" title="找到nginx配置文件"></a>找到nginx配置文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -t</span><br></pre></td></tr></table></figure><p><img src="https://assets.adunm.top/typora/blog/202211142016868.webp" alt=""></p><h5 id="使用vim编辑配置文件，根据自己目录为准"><a href="#使用vim编辑配置文件，根据自己目录为准" class="headerlink" title="使用vim编辑配置文件，根据自己目录为准"></a>使用vim编辑配置文件，根据自己目录为准</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure><h5 id="按照下面配置"><a href="#按照下面配置" class="headerlink" title="按照下面配置"></a>按照下面配置</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">+   listen 80 default_server;</span><br><span class="line">    server_name yourdomain; #需要将yourdomain替换成证书绑定的域名</span><br><span class="line">+    return 403;</span><br><span class="line">    rewrite ^(.*)$ https://$host$1; #将所有HTTP请求通过rewrite指令重定向到HTTPS。</span><br><span class="line">    location / &#123;</span><br><span class="line">        index index.html index.htm;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>配置完后重新加载nginx配置文件<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./nginx -s reload </span><br></pre></td></tr></table></figure></p><p><img src="https://assets.adunm.top/typora/blog/202211142016644.webp" alt=""></p><p>欧克qwq</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Nginx </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 📘 Nginx </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo部署至服务器（Ubuntu 20.04）</title>
+      <link href="/posts/4ae8ered/"/>
+      <url>/posts/4ae8ered/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><div class="tip home"><p>Nginx是异步框架的网页服务器，也可以用作反向代理、负载平衡器和HTTP缓存。该软件由俄罗斯程序员伊戈尔·赛索耶夫开发并于2004年首次公开发布。2011年成立同名公司以提供支持服务。2019年3月11日，Nginx公司被F5网络公司以6.7亿美元收购。 Nginx是免费的开源软件，根据类BSD许可证的条款发布</p></div><div class="table-container"><table><thead><tr><th>系统环境</th></tr></thead><tbody><tr><td>ubuntu 20.04</td></tr></tbody></table></div><h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><h4 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h4><p>安装PCRE</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libpcre3 libpcre3-dev</span><br></pre></td></tr></table></figure><p>安装OpenSSL开发库</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssl libssl-dev</span><br></pre></td></tr></table></figure><p>安装Git<br>验证安装 git —version</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install git</span><br></pre></td></tr></table></figure><h4 id="下载nginx包安装"><a href="#下载nginx包安装" class="headerlink" title="下载nginx包安装"></a>下载nginx包安装</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local</span><br><span class="line">mkdir nginx</span><br><span class="line">cd nginx</span><br><span class="line">wget https://nginx.org/download/nginx-1.23.0.tar.gz</span><br><span class="line">tar -xvf nginx-1.23.0.tar.gz</span><br></pre></td></tr></table></figure><p><img src="https://assets.adunm.top/typora/blog/202211150418111.webp" alt=""></p><p>编译Nginx</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure><p>查看是否开启ssl模块</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -V</span><br></pre></td></tr></table></figure><p>没有安装<br><img src="https://assets.adunm.top/typora/blog/202211150418435.webp" alt=""><br>开启ssk模块</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module</span><br><span class="line"># 执行make命令</span><br><span class="line">make</span><br></pre></td></tr></table></figure><p>然后备份原有已安装好的nginx</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.bak</span><br></pre></td></tr></table></figure><p>覆盖掉原有的nginx</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp ./objs/nginx /usr/local/nginx/sbin/</span><br></pre></td></tr></table></figure><p>启动Nginx</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx</span><br></pre></td></tr></table></figure><p>查看安装</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -V</span><br></pre></td></tr></table></figure><p>正常开启如下图<br><img src="https://assets.adunm.top/typora/blog/202211150418392.webp" alt=""><br>将nginx配置到全局环境变量中</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 编辑 profile文件</span><br><span class="line">sudo vi /etc/profile</span><br><span class="line"># 添加代码</span><br><span class="line">export NGINX_HOME=/usr/local/nginx</span><br><span class="line">export PATH=$PATH:$NGINX_HOME/sbin</span><br><span class="line"># 保存退出</span><br><span class="line">wq!</span><br><span class="line"># 重载profile文件</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure><p><img src="https://assets.adunm.top/typora/blog/202211150418650.webp" alt=""><br>nginx -v查看<br><img src="https://assets.adunm.top/typora/blog/202211150418625.webp" alt=""></p><h3 id="开始正式的部署工作"><a href="#开始正式的部署工作" class="headerlink" title="开始正式的部署工作"></a>开始正式的部署工作</h3><h4 id="初始化git仓库"><a href="#初始化git仓库" class="headerlink" title="初始化git仓库"></a>初始化git仓库</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /home   # 进入 home 目录</span><br><span class="line">mkdir blog # 创建 blog 目录</span><br><span class="line">cd blog    # 进入 blog</span><br><span class="line">git init --bare Blog.git  # 建立一个“裸”的Git仓库</span><br><span class="line">mkdir MyBlog  # 新建 MyBlog 用于存放内容</span><br></pre></td></tr></table></figure><h4 id="创建git钩子"><a href="#创建git钩子" class="headerlink" title="创建git钩子"></a>创建git钩子</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /home/blog/Blog.git/hooks/post-receive</span><br><span class="line"># 添加以下代码</span><br><span class="line">git --work-tree=/home/blog/Blog --git-dir=/home/blog/Blog.git checkout -f</span><br><span class="line"></span><br><span class="line">chmod +x /home/blog/Blog.git/hooks/post-receive  # 添加权限</span><br></pre></td></tr></table></figure><p>不同安装方式nginx配置文件路径不同</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -t  # 查看配置文件位置</span><br></pre></td></tr></table></figure><p><img src="https://assets.adunm.top/typora/blog/202211150418362.webp" alt=""></p><p>编辑 nginx.conf 文件</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure><p>大概在44行</p><p><img src="https://assets.adunm.top/typora/blog/202211150418291.webp" alt=""></p><p>更新配置文件</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginx/sbin/</span><br><span class="line">./nginx -s reload   # 重新加载配置文件</span><br><span class="line">./nginx -s stop     # 停止</span><br><span class="line">./nginx             # 启动</span><br></pre></td></tr></table></figure><p><img src="https://assets.adunm.top/typora/blog/202211150419322.webp" alt=""><br>配置本地文件<br>修改hexo根目录的_config.yml文件后面添加</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: </span><br><span class="line">    myblog: 用户名@服务器ip:/home/blog/MyBlog,master</span><br></pre></td></tr></table></figure><h4 id="记得一键三联哦，输入服务器公网IP查看"><a href="#记得一键三联哦，输入服务器公网IP查看" class="headerlink" title="记得一键三联哦，输入服务器公网IP查看"></a>记得一键三联哦，输入服务器公网IP查看</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clear</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 🖥️ Ubuntu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/posts/4a17b156/"/>
+      <url>/posts/4a17b156/</url>
+      
+        <content type="html"><![CDATA[<div class="table-container"><table><thead><tr><th style="text-align:center"></th><th style="text-align:center">框架</th><th style="text-align:center">主题</th><th style="text-align:center">JavaScript 环境</th></tr></thead><tbody><tr><td style="text-align:center">版本</td><td style="text-align:center">Hexo 6.3.0</td><td style="text-align:center">Butterfly 4.6.0</td><td style="text-align:center">Nodejs 19.2.0</td></tr><tr><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td style="text-align:center"></td><td style="text-align:center"><strong>阿里云</strong></td><td style="text-align:center"><strong>Uptime Kuma</strong></td><td style="text-align:center"><strong>访客记录</strong></td></tr><tr><td style="text-align:center">状态</td><td style="text-align:center"><a href="https://status.adunm.top/">服务器</a></td><td style="text-align:center"><a href="https://uptime.adunm.top/status/ylan">所有服务</a></td><td style="text-align:center"><a href="https://umami.adunm.top/share/S8NFCEHB/%E9%9A%8F%E9%A3%8E%E7%AB%99">umami</a></td></tr><tr><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td style="text-align:center"></td><td style="text-align:center"><strong>主线路</strong></td><td style="text-align:center"><strong>Vercel</strong></td><td style="text-align:center"><strong>Github</strong></td></tr><tr><td style="text-align:center">路线</td><td style="text-align:center"><a href="https://adunm.top/">✈️</a></td><td style="text-align:center"><a href="https://vercel.adunm.top/">🚗</a></td><td style="text-align:center"><a href="https://ylanw.github.io/">🛳️</a></td></tr><tr><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td style="text-align:center">CDN</td><td style="text-align:center"><a href="https://www.upyun.com/">又拍云</a></td><td style="text-align:center">静态资源</td><td style="text-align:center"><a href="https://cdn.bytedance.com/">字节跳动</a>  <a href="https://npm.elemecdn.com/">饿了么</a>  <a href="https://staticfile.org/">七牛云</a>  <a href="https://cdn.baomitu.com/">360</a></td></tr><tr><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td style="text-align:center">字体</td><td style="text-align:center"><a href="https://cloud.adunm.top/api/raw/?path=/%F0%9F%AA%84%E5%AD%97%E4%BD%93/%E5%AD%97%E5%BF%83%E5%9D%8A%E8%BD%A9%E9%9B%85%E5%B8%B8%E8%A7%84%E4%BD%93/ZiXinFangXuanYaChangGuiTi.7z/">字心坊轩雅常规体</a></td><td style="text-align:center">鼠标指针</td><td style="text-align:center"><a href="https://cloud.adunm.top/%F0%9F%AA%85%E7%BD%91%E9%A1%B5%E9%BC%A0%E6%A0%87%E6%8C%87%E9%92%88">白色版 Comix 光标</a></td></tr></tbody></table></div><h1 id="隐私政策"><a href="#隐私政策" class="headerlink" title="隐私政策"></a>隐私政策</h1><p>本站非常重视用户的隐私和个人信息保护。您在使用网站时，可能会收集和使用您的相关信息。通过《隐私政策》向您说明在您访问 <mark class="hl-label blue">www.adunm.top</mark>  网站时，如何收集、使用、保存、共享和转让这些信息。</p><h3 id="如何收集和使用您的个人信息"><a href="#如何收集和使用您的个人信息" class="headerlink" title="如何收集和使用您的个人信息"></a>如何收集和使用您的个人信息</h3><p>网络身份标识信息（浏览器 UA、IP 地址）、您的地理位置信息（具体到城市）、电子邮件地址。</p><h4 id="在您访问时，仅会处于以下目的，使用您的个人信息："><a href="#在您访问时，仅会处于以下目的，使用您的个人信息：" class="headerlink" title="在您访问时，仅会处于以下目的，使用您的个人信息："></a>在您访问时，仅会处于以下目的，使用您的个人信息：</h4><ul><li><strong><a href="https://umami.adunm.top/share/S8NFCEHB/%E9%9A%8F%E9%A3%8E%E7%AB%99">umami</a></strong> 会收集你的访问信息</li></ul><h4 id="在访问时，本站内置的第三方服务会通过以下或更多途径，来获取你的以下或更多信息："><a href="#在访问时，本站内置的第三方服务会通过以下或更多途径，来获取你的以下或更多信息：" class="headerlink" title="在访问时，本站内置的第三方服务会通过以下或更多途径，来获取你的以下或更多信息："></a>在访问时，本站内置的第三方服务会通过以下或更多途径，来获取你的以下或更多信息：</h4><ul><li><strong><a href="https://cn.aliyun.com/">阿里云</a></strong> 会收集你的访问信息</li><li><strong><a href="https://tongji.baidu.com/web5/welcome/login">百度统计工具</a></strong> 会收集你的访问信息、访问操作过程</li><li><strong><a href="https://perf.51.la">灵雀应用监控平台</a></strong> 会收集你的访问操作过程和资源加载情况</li><li><strong><a href="https://www.51.la/about/privacy">51.LA</a></strong> 会收集你的访问信息</li><li><strong><a href="https://cdn.bytedance.com/">字节跳动静态资源库</a></strong> 会收集你的访问信息</li><li><strong><a href="https://npm.elemecdn.com/">饿了么静态资源库</a></strong> 会收集你的访问信息</li><li><strong><a href="https://cdn.baomitu.com/">360 前端静态资源库</a></strong> 会收集你的访问信息</li><li><strong><a href="https://staticfile.org/">七牛云</a></strong> 会收集你的访问信息</li><li><strong><a href="https://www.upyun.com/">又拍云</a></strong> 会收集你的资源加载情况</li><li><strong><a href="https://clarity.microsoft.com/">Microsoft Clarity</a></strong> 捕获真实用户如何实际使用你的网站</li><li><p><strong><a href="https://marketingplatform.google.com/about/analytics/">Google Analytics</a></strong> 提供数据统计服务。可以对目标网站进行访问数据统计和分析，并提供多种参数供网站拥有者使用。</p><h3 id="在访问时，本人仅会处于以下目的，使用你的个人信息："><a href="#在访问时，本人仅会处于以下目的，使用你的个人信息：" class="headerlink" title="在访问时，本人仅会处于以下目的，使用你的个人信息："></a>在访问时，本人仅会处于以下目的，使用你的个人信息：</h3></li><li><p>用于网站的优化与文章分类，用户优化文章</p></li><li>恶意访问识别，用于维护网站</li><li>恶意攻击排查，用于维护网站</li><li>网站点击情况监测，用于优化网站页面</li><li>网站加载情况监测，用于优化网站性能</li><li>用于网站搜索结果优化</li><li>浏览数据的展示</li></ul><h3 id="您应该知道在您访问的时候以下信息会被统计功能使用："><a href="#您应该知道在您访问的时候以下信息会被统计功能使用：" class="headerlink" title="您应该知道在您访问的时候以下信息会被统计功能使用："></a>您应该知道在您访问的时候以下信息会被统计功能使用：</h3><script src="https://jsd.cdn.zzko.cn/gh/ccknbc-backup/cdn/js/privacy.js"></script><div class="table-container"><table><thead><tr><th style="text-align:center">类型<div style="width:100px"></div></th><th style="text-align:center">信息</th></tr></thead><tbody><tr><td style="text-align:center">IP 地址</td><td style="text-align:center"><div id="userAgentIp"></div></td></tr><tr><td style="text-align:center">国家</td><td style="text-align:center"><div id="userAgentCountry"></div></td></tr><tr><td style="text-align:center">省份</td><td style="text-align:center"><div id="userAgentRegion"></div></td></tr><tr><td style="text-align:center">城市</td><td style="text-align:center"><div id="userAgentCity"></div></td></tr><tr><td style="text-align:center">运营商</td><td style="text-align:center"><div id="userAgentIsp"></div></td></tr><tr><td style="text-align:center">设备</td><td style="text-align:center"><div id="userAgentDevice"></div></td></tr></tbody></table></div><script type="text/javascript">getIpInfo()</script><h3 id="如何共享、转让你的个人信息"><a href="#如何共享、转让你的个人信息" class="headerlink" title="如何共享、转让你的个人信息"></a>如何共享、转让你的个人信息</h3><p>本人不会与任何公司、组织和个人共享你的隐私信息</p><p>本人不会将你的个人信息转让给任何公司、组织和个人</p><p>第三方服务的共享、转让情况详见对应服务的隐私协议</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 🦋 Butterfly </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>这是这篇测试文章</title>
+      <link href="/posts/4a17b154/"/>
+      <url>/posts/4a17b154/</url>
+      
+        <content type="html"><![CDATA[<h2 id="这是这篇测试文章"><a href="#这是这篇测试文章" class="headerlink" title="这是这篇测试文章"></a>这是这篇测试文章</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 🦋 Butterfly </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>PicGo+GitHub 图床搭建</title>
+      <link href="/posts/6d798241/"/>
+      <url>/posts/6d798241/</url>
+      
+        <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>用GitHub搭建图床，在很久之前我就有了解，但由于市面上有挺多免费的图床，比如我之前一直在用的 路过图床，所以一直懒得动手搭建GitHub图床。一直到前两天我在完善博客的相册时，发现 路过图床 免费版的有这么多限制，比如：每小时限制上传50张图片，每天限制上传100张图片，而且免费版用户的存储容量貌似不过300M，这才意识到有一个自己的GitHub图床是多么重要。</p><h3 id="0x001-PicGO-介绍"><a href="#0x001-PicGO-介绍" class="headerlink" title="0x001 PicGO 介绍"></a>0x001 PicGO 介绍</h3><p>PicGo是一款图片上传工具，目前支持 SM.MS图床、腾讯云COS、GitHub图床、七牛图床、Imgur图床、阿里云OSS、又拍云图床，未来将支持更多图床。</p><p>在支持的这些图床中，SM.MS和Imgur有免费版和收费版，免费版的肯定有很多的使用限制，比如每小时限制上传次数，限制用户的上传容量等等；腾讯云COS、阿里云、有拍云都是要收费使用的；七牛云貌似前期使用免费，后期又要收费才能使用，就剩下的GitHub才是免费且最可靠的。</p><p>PicGo源项目GitHub地址已给出，但是去GitHub下载速度非常慢，这里额外提供一个蓝奏云的快速下载地址。</p><ul><li>GitHub地址：<a href="https://github.com/Molunerfinn/PicGo">https://github.com/Molunerfinn/PicGo</a></li><li>蓝奏云地址：<a href="https://luckyzmj.lanzous.com/id3e0id">https://luckyzmj.lanzous.com/id3e0id</a></li></ul><h3 id="0x002-GitHub-图床"><a href="#0x002-GitHub-图床" class="headerlink" title="0x002 GitHub 图床"></a>0x002 GitHub 图床</h3><h4 id="1-创建GitHub图床仓库"><a href="#1-创建GitHub图床仓库" class="headerlink" title="1. 创建GitHub图床仓库"></a>1. 创建GitHub图床仓库</h4><p>首先需要有一个登录GitHub的账号，没有的话去<a href="https://github.com/">GitHub官网</a>注册一个</p><p>创建一个新的图床仓库，点击右上角的New repository</p><p><img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/posts/20200529155833.png" alt=""></p><p>填写如下配置信息，然后Create创建仓库</p><p><img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/posts/20200529160010.png" alt=""></p><h4 id="2-获取GitHub-token值"><a href="#2-获取GitHub-token值" class="headerlink" title="2. 获取GitHub token值"></a>2. 获取GitHub token值</h4><p>点击右上的头像，选择设置Setting</p><p><img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/posts/20200529160727.png" alt=""></p><p>点击选择Developer settings </p><p><img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/posts/20200529160939.png" alt=""></p><p>点击 Generate New token</p><p><img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/posts/20200529161241.png" alt=""></p><p>填写如下配置信息，只要勾选repo选项即可，然后页面拉到底部点击Generate token 即可</p><p><img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/posts/20200529161716.png" alt=""></p><p>此时会跳转到带有token的页面，将token值复制记录下来，之后用PicGo绑定GitHub图床时会利用到</p><p><img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/posts/20200529162127.png" alt=""></p><h3 id="0x003-PicGo-配置"><a href="#0x003-PicGo-配置" class="headerlink" title="0x003 PicGo 配置"></a>0x003 PicGo 配置</h3><h4 id="1-绑定GitHub图床"><a href="#1-绑定GitHub图床" class="headerlink" title="1. 绑定GitHub图床"></a>1. 绑定GitHub图床</h4><p>首先下载安装好PicGo软件，然后在右列表找到GitHub图床配置</p><p><img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/posts/20200529163130.png" alt=""></p><p><strong>1. 设定仓库名(必填)：</strong> </p><p>按照“GitHub账户名/仓库名的格式填写”，比如我的是：Luckyzmj/imgbed</p><p><strong>2. 设定分支名(必填)：</strong> </p><p>仓库分支名填写”master”或者”main”，视情况而定。因为GitHub 官方表示,从2020年10月1日起,在该平台上创建的所有新的源代码仓库将默认被命名为”main”,而不是原先的”master”。</p><p><strong>3. 设定Token(必填)：</strong> </p><p>将之前步骤的Token值复制粘贴到这里</p><p><strong>4. 指定存储路径：</strong> </p><p>这个选项可以为空，如果想将图片上传到仓库的指定目录下，可以填写目录名加/，比如我的imgbed仓库下有个posts文件夹，需设置为 posts/</p><p><strong>5. 设定自定义域名：</strong> </p><p>这里统一用jsdelivr的CDN加速域名，在上传图片后成功后，PicGo会将“自定义域名+上传的图片名”生成的访问链接</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">自定义域名格式：https://cdn.jsdelivr.net/gh/GitHub账户名/仓库名</span><br><span class="line">以我的格式为例：https://cdn.jsdelivr.net/gh/Luckyzmj/imgbed</span><br></pre></td></tr></table></figure><p>配置完全部信息后，点击 设为默认图床，最后点击确定即可</p><h4 id="2-上传图片到图床"><a href="#2-上传图片到图床" class="headerlink" title="2. 上传图片到图床"></a>2. 上传图片到图床</h4><p>在上传区上传图片，可支持本地图片上传(可多选图片)、剪贴板上传、URL上传等三种方式。上传图片成功后，选择你想要生成的图片链接格式</p><p><img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/posts/20200529170555.png" alt=""></p><p>在图片区，可以看到成功上传的图片，选择相应的图片进行操作即可</p><p><img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/posts/20200529170831.png" alt=""></p><h4 id="3-PicGo-注意事项"><a href="#3-PicGo-注意事项" class="headerlink" title="3. PicGo 注意事项"></a>3. PicGo 注意事项</h4><p>如果配置完PicGo后却上传图片失败，可以参考以下方法：</p><ol><li>检查自定义域名是否正确</li><li>仓库名不要有空格</li><li>图片名字不要带有特殊符号，如：%、+、*、空格等</li><li>建议开启时间戳重命名，防止图片名字重复</li><li>上传图片间歇太短，需在PicGo设置中关闭Server选项</li><li>PicGo应用不稳定因素，需重启应用</li></ol><h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><ul><li><a href="https://blog.csdn.net/sunhwee/article/details/100109956">https://blog.csdn.net/sunhwee/article/details/100109956</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 🦋 Butterfly </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>网易云七天会员</title>
+      <link href="/posts/4ae8abr/"/>
+      <url>/posts/4ae8abr/</url>
+      
+        <content type="html"><![CDATA[<div class="timeline blue"><div class='timeline-item headline'><div class='timeline-item-title'><div class='item-circle'><p>时间轴</p></div></div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>2023-01.01-2023-01.31 <a href="https://music.163.com/prime/m/gift-receive?p=cpf8F9b-HXhEsG6rDetkG-9Mu7lgLQrUUaJHkLk-uVk66oYhE4vF8YrgjudVz1OooYWG04XNjakyFnXfBt7EggCRqBjgvsSD4XQmHoEUzdk&amp;d=SliREEsq7-TZ9My65RRMYA">网易云音乐会员</a></p></div></div><div class='timeline-item-content'><ol><li><p>放着也是浪费，大家不嫌弃的话可以去领领，只有5张</p></li><li><p>数量有限先到先得</p></li></ol></div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>2022-11.00 <a href="https://music.163.com/prime/m/gift-receive?p=P5tlgqd8vYapaq9dGzZxSv4LmY6IssOaPMwkF4X6ehFnY55fHZN0oB7mjLhe8u3cZCJ2AAo9hEdNNLH-9VHTD0Y3w7iiQ1DNrUtN_3nku90&amp;d=eeiH1j11ZDT9DWZvwgcs1Q">网易云音乐会员</a></p></div></div><div class='timeline-item-content'><p>已过期</p></div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>2022-10.00 <a href="https://music.163.com/prime/m/gift-receive?p=k4Y7Q-n6T-Mcv5FAv80a40Wg5Q-JFL0SRXcWJ2y1x8wUd4wE-ryP2ELAVHTZe9FaW4NhNLPjwdR7Yd1mGl7jzA7antrigFn0UxMey5-tzG0&amp;d=VzFeLcFC0frWheaX7HNPeQ">网易云音乐会员</a></p></div></div><div class='timeline-item-content'><p>已过期</p></div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>2022-5.00 <a href="https://music.163.com/prime/m/gift-receive?p=k4Y7Q-n6T-Mcv5FAv80a40Wg5Q-JFL0SRXcWJ2y1x8wUd4wE-ryP2ELAVHTZe9FaW4NhNLPjwdR7Yd1mGl7jzA7antrigFn0UxMey5-tzG0&amp;d=VzFeLcFC0frWheaX7HNPeQ">网易云音乐会员</a></p></div></div><div class='timeline-item-content'><p>已过期</p></div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>2022-1.00 <a href="https://music.163.com/prime/m/gift-receive?p=k4Y7Q-n6T-Mcv5FAv80a40Wg5Q-JFL0SRXcWJ2y1x8wUd4wE-ryP2ELAVHTZe9FaW4NhNLPjwdR7Yd1mGl7jzA7antrigFn0UxMey5-tzG0&amp;d=VzFeLcFC0frWheaX7HNPeQ">网易云音乐会员</a></p></div></div><div class='timeline-item-content'><p>已过期</p></div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>2021-12.00 <a href="https://music.163.com/prime/m/gift-receive?p=k4Y7Q-n6T-Mcv5FAv80a40Wg5Q-JFL0SRXcWJ2y1x8wUd4wE-ryP2ELAVHTZe9FaW4NhNLPjwdR7Yd1mGl7jzA7antrigFn0UxMey5-tzG0&amp;d=VzFeLcFC0frWheaX7HNPeQ">网易云音乐会员</a></p></div></div><div class='timeline-item-content'><p>已过期</p></div></div></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网易云音乐 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 🪗 网易云音乐 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
