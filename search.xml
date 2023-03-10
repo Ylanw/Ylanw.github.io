@@ -129,31 +129,6 @@
     
     
     <entry>
-      <title>解决 Vercel 在国内无法访问</title>
-      <link href="/posts/4a17b151/"/>
-      <url>/posts/4a17b151/</url>
-      
-        <content type="html"><![CDATA[<p>译</p><blockquote><p>我们进行了更改，以确保 vercel.com 和 vercel.app 域可以在中国境内被屏蔽后再次从中国访问。</p><p>对于在 Vercel 上使用自定义域的受影响用户，可以通过将指向 Vercel 的 A 记录值从 76.76.21.21 更改为 76.223.126.88 来缓解该问题。</p><p>虽然我们已经解决了影响 CNAME 记录的问题，但我们仍然建议将 cname.vercel-dns.com 更改为 cname-china.vercel-dns.com 以获得额外的冗余。</p></blockquote><h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>给Vercel绑定自己的域名<br><img src="https://assets.adunm.top/typora/blog/wsns.webp" alt=""></p><h4 id="到域名商添加记录"><a href="#到域名商添加记录" class="headerlink" title="到域名商添加记录"></a>到域名商添加记录</h4><p>A记录修改为：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">76.223.126.88</span><br></pre></td></tr></table></figure><br>cname记录修改为：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cname-china.vercel-dns.com （推荐）</span><br></pre></td></tr></table></figure><br><img src="https://assets.adunm.top/typora/blog/wqwqe.webp" alt=""></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 实用 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 🌐 Vercel </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>最新自动续订E5</title>
       <link href="/posts/4aa8ab/"/>
       <url>/posts/4aa8ab/</url>
@@ -171,6 +146,31 @@
         <tags>
             
             <tag> 🪪 Office </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>解决 Vercel 在国内无法访问</title>
+      <link href="/posts/4a17b151/"/>
+      <url>/posts/4a17b151/</url>
+      
+        <content type="html"><![CDATA[<p>译</p><blockquote><p>我们进行了更改，以确保 vercel.com 和 vercel.app 域可以在中国境内被屏蔽后再次从中国访问。</p><p>对于在 Vercel 上使用自定义域的受影响用户，可以通过将指向 Vercel 的 A 记录值从 76.76.21.21 更改为 76.223.126.88 来缓解该问题。</p><p>虽然我们已经解决了影响 CNAME 记录的问题，但我们仍然建议将 cname.vercel-dns.com 更改为 cname-china.vercel-dns.com 以获得额外的冗余。</p></blockquote><h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>给Vercel绑定自己的域名<br><img src="https://assets.adunm.top/typora/blog/wsns.webp" alt=""></p><h4 id="到域名商添加记录"><a href="#到域名商添加记录" class="headerlink" title="到域名商添加记录"></a>到域名商添加记录</h4><p>A记录修改为：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">76.223.126.88</span><br></pre></td></tr></table></figure><br>cname记录修改为：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cname-china.vercel-dns.com （推荐）</span><br></pre></td></tr></table></figure><br><img src="https://assets.adunm.top/typora/blog/wqwqe.webp" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 实用 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 🌐 Vercel </tag>
             
         </tags>
       
