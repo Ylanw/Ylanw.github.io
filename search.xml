@@ -129,31 +129,6 @@
     
     
     <entry>
-      <title>最新自动续订E5</title>
-      <link href="/posts/4aa8ab/"/>
-      <url>/posts/4aa8ab/</url>
-      
-        <content type="html"><![CDATA[<details class="folding-tag" yellow><summary> 参考教程 </summary>              <div class='content'>              <ul><li><a href="https://qyi.io/archives/687.html">E5 自动订阅程序[已开源]</a></li></ul>              </div>            </details><h2 id="原作者说明"><a href="#原作者说明" class="headerlink" title="原作者说明"></a>原作者说明</h2><blockquote><p>此程序部署在我的服务器上，每隔两小时会自动调用outlook api 获取邮件列表</p><p>对于信息: 只会保存必要的 client_id、client_secret，其他任何内容都不会保存，</p><p>会读取授权的outlook账号邮箱邮件，但不会保存任何信息，仅仅是调用api。</p><p>请单独创建一个同域 E5 子账号进行授权，不要使用此账号进行发送、接收个人邮件，以免发生误会。</p></blockquote><h3 id="需要准备"><a href="#需要准备" class="headerlink" title="需要准备"></a>需要准备</h3><ol><li>E5账号</li><li>Github账号</li><li>申请E5子账号(该账号仅用于E5续订)</li></ol><h3 id="登录Microsoft-Azure"><a href="#登录Microsoft-Azure" class="headerlink" title="登录Microsoft Azure"></a>登录Microsoft Azure</h3><p>打开登录<a href="https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps">Microsoft Azure</a>搜索 <kbd>应用注册</kbd>(<wavy>该教程使用E5主账号</wavy>)</p><p><img src="https://assets.adunm.top/typora/blog/202211122145898.webp?x-oss-process=style/sy" alt=""></p><h3 id="点击-新注册"><a href="#点击-新注册" class="headerlink" title="点击 新注册"></a>点击 新注册</h3><div class="note warning flat"><p><strong>1、受支持的帐户类型</strong> ，请选择第一个，<strong>仅此组织目录(仅 xxx - 单一租户)中的帐户</strong></p><p>2、重定向 URI (可选) 暂时不要填写。</p></div><p><img src="https://assets.adunm.top/typora/blog/202301161258434.webp?x-oss-process=style/sy" alt=""></p><h3 id="点击注册后记录以下信息"><a href="#点击注册后记录以下信息" class="headerlink" title="点击注册后记录以下信息:"></a>点击注册后记录以下信息:</h3><p><strong>1、应用程序(客户端)ID</strong></p><p><strong>2、目录(租户) ID</strong></p><p><strong>3、客户端密码（在下面获取）</strong></p><p><img src="https://assets.adunm.top/typora/blog/202301161258436.webp?x-oss-process=style/sy" alt=""></p><h3 id="申请证书和密钥"><a href="#申请证书和密钥" class="headerlink" title="申请证书和密钥"></a>申请证书和密钥</h3><p>点击→证书和密钥→新客服端密码→说明可以不用填，截至期限选择24个月(别在意这些，谁也不知道一年后微软的策略会不会变，一年换一次密钥也不麻烦)</p><p><img src="https://assets.adunm.top/typora/blog/202211122145109.webp?x-oss-process=style/sy" alt=""></p><div class="note warning flat"><p>复制值，注意不是机密 ID</p><p>保存好以上面个key（客户端密码），一会需要用到。</p></div><h3 id="配置api权限"><a href="#配置api权限" class="headerlink" title="配置api权限"></a>配置api权限</h3><ol><li><p>选择 API 权限 </p></li><li><p>选择微软图表</p></li><li><p>搜索mail，选择下面四个</p></li><li><p>最后选择添加权限</p></li></ol><p><img src="https://assets.adunm.top/typora/blog/202301161258574.webp?x-oss-process=style/sy" alt=""></p><p>同时点击 <strong>代表XXX授予管理员同意</strong></p><p><img src="https://assets.adunm.top/typora/blog/202301161258186.webp?x-oss-process=style/sy" alt=""></p><p>这个时候api的配置就算完成了</p><h3 id="打开E5续订使用Github账号登录"><a href="#打开E5续订使用Github账号登录" class="headerlink" title="打开E5续订使用Github账号登录"></a>打开<a href="https://e5.qyi.io/login">E5续订</a>使用Github账号登录</h3><p>进入主页面后，请先获取回调地址，每个人的地址都不同，请不要泄露以及复制别人的。</p><p>这一步骤是为了减少被判定为钓鱼应用的风险。</p><p>点击 获取回调地址 </p><p><img src="https://assets.adunm.top/typora/blog/202301161258641.webp?x-oss-process=style/sy" alt=""></p><p>将这个地址复制，粘贴到 azure 面板，步骤如下</p><p><img src="https://assets.adunm.top/typora/blog/202301161258554.webp?x-oss-process=style/sy" alt=""></p><p>把 获取回调地址 填入 web 重定向 URI 中</p><p><img src="https://assets.adunm.top/typora/blog/202301161258605.webp?x-oss-process=style/sy" alt=""></p><p>返回E5续订</p><p>新建应用</p><p>把刚才复制<strong>应用程序(客户端)ID、客户端密码</strong> <strong>、租户ID</strong> 填入</p><p><img src="https://assets.adunm.top/typora/blog/202301161258617.webp?x-oss-process=style/sy" alt=""></p><p>此时会跳转到 microsoftonline Auth2.0授权页面，在这里请注意使用同一个域下的空账号(子账号)进行授权。</p><p>新建子账号一直默认就好了，这里不做演示</p><p><img src="https://assets.adunm.top/typora/blog/202301161258018.webp?x-oss-process=style/sy"  /></p><p>授权成功后过几个小时打开<a href="https://e5.qyi.io/">续订E5</a>点击 日志 显示成功</p><p><img src="https://assets.adunm.top/typora/blog/202301161259667.webp?x-oss-process=style/sy" alt=""></p><h3 id="三个月后。。。"><a href="#三个月后。。。" class="headerlink" title="三个月后。。。"></a>三个月后。。。</h3><p><img src="https://assets.adunm.top/typora/blog/202301082038924.webp?x-oss-process=style/sy" alt=""></p><h4 id="有问题欢迎到评论区讨论"><a href="#有问题欢迎到评论区讨论" class="headerlink" title="有问题欢迎到评论区讨论"></a>有问题欢迎到评论区讨论</h4>]]></content>
-      
-      
-      <categories>
-          
-          <category> Office </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 🪪 Office </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>解决 Vercel 在国内无法访问</title>
       <link href="/posts/4a17b151/"/>
       <url>/posts/4a17b151/</url>
@@ -171,6 +146,31 @@
         <tags>
             
             <tag> 🌐 Vercel </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>最新自动续订E5</title>
+      <link href="/posts/4aa8ab/"/>
+      <url>/posts/4aa8ab/</url>
+      
+        <content type="html"><![CDATA[<details class="folding-tag" yellow><summary> 参考教程 </summary>              <div class='content'>              <ul><li><a href="https://qyi.io/archives/687.html">E5 自动订阅程序[已开源]</a></li></ul>              </div>            </details><h2 id="原作者说明"><a href="#原作者说明" class="headerlink" title="原作者说明"></a>原作者说明</h2><blockquote><p>此程序部署在我的服务器上，每隔两小时会自动调用outlook api 获取邮件列表</p><p>对于信息: 只会保存必要的 client_id、client_secret，其他任何内容都不会保存，</p><p>会读取授权的outlook账号邮箱邮件，但不会保存任何信息，仅仅是调用api。</p><p>请单独创建一个同域 E5 子账号进行授权，不要使用此账号进行发送、接收个人邮件，以免发生误会。</p></blockquote><h3 id="需要准备"><a href="#需要准备" class="headerlink" title="需要准备"></a>需要准备</h3><ol><li>E5账号</li><li>Github账号</li><li>申请E5子账号(该账号仅用于E5续订)</li></ol><h3 id="登录Microsoft-Azure"><a href="#登录Microsoft-Azure" class="headerlink" title="登录Microsoft Azure"></a>登录Microsoft Azure</h3><p>打开登录<a href="https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps">Microsoft Azure</a>搜索 <kbd>应用注册</kbd>(<wavy>该教程使用E5主账号</wavy>)</p><p><img src="https://assets.adunm.top/typora/blog/202211122145898.webp?x-oss-process=style/sy" alt=""></p><h3 id="点击-新注册"><a href="#点击-新注册" class="headerlink" title="点击 新注册"></a>点击 新注册</h3><div class="note warning flat"><p><strong>1、受支持的帐户类型</strong> ，请选择第一个，<strong>仅此组织目录(仅 xxx - 单一租户)中的帐户</strong></p><p>2、重定向 URI (可选) 暂时不要填写。</p></div><p><img src="https://assets.adunm.top/typora/blog/202301161258434.webp?x-oss-process=style/sy" alt=""></p><h3 id="点击注册后记录以下信息"><a href="#点击注册后记录以下信息" class="headerlink" title="点击注册后记录以下信息:"></a>点击注册后记录以下信息:</h3><p><strong>1、应用程序(客户端)ID</strong></p><p><strong>2、目录(租户) ID</strong></p><p><strong>3、客户端密码（在下面获取）</strong></p><p><img src="https://assets.adunm.top/typora/blog/202301161258436.webp?x-oss-process=style/sy" alt=""></p><h3 id="申请证书和密钥"><a href="#申请证书和密钥" class="headerlink" title="申请证书和密钥"></a>申请证书和密钥</h3><p>点击→证书和密钥→新客服端密码→说明可以不用填，截至期限选择24个月(别在意这些，谁也不知道一年后微软的策略会不会变，一年换一次密钥也不麻烦)</p><p><img src="https://assets.adunm.top/typora/blog/202211122145109.webp?x-oss-process=style/sy" alt=""></p><div class="note warning flat"><p>复制值，注意不是机密 ID</p><p>保存好以上面个key（客户端密码），一会需要用到。</p></div><h3 id="配置api权限"><a href="#配置api权限" class="headerlink" title="配置api权限"></a>配置api权限</h3><ol><li><p>选择 API 权限 </p></li><li><p>选择微软图表</p></li><li><p>搜索mail，选择下面四个</p></li><li><p>最后选择添加权限</p></li></ol><p><img src="https://assets.adunm.top/typora/blog/202301161258574.webp?x-oss-process=style/sy" alt=""></p><p>同时点击 <strong>代表XXX授予管理员同意</strong></p><p><img src="https://assets.adunm.top/typora/blog/202301161258186.webp?x-oss-process=style/sy" alt=""></p><p>这个时候api的配置就算完成了</p><h3 id="打开E5续订使用Github账号登录"><a href="#打开E5续订使用Github账号登录" class="headerlink" title="打开E5续订使用Github账号登录"></a>打开<a href="https://e5.qyi.io/login">E5续订</a>使用Github账号登录</h3><p>进入主页面后，请先获取回调地址，每个人的地址都不同，请不要泄露以及复制别人的。</p><p>这一步骤是为了减少被判定为钓鱼应用的风险。</p><p>点击 获取回调地址 </p><p><img src="https://assets.adunm.top/typora/blog/202301161258641.webp?x-oss-process=style/sy" alt=""></p><p>将这个地址复制，粘贴到 azure 面板，步骤如下</p><p><img src="https://assets.adunm.top/typora/blog/202301161258554.webp?x-oss-process=style/sy" alt=""></p><p>把 获取回调地址 填入 web 重定向 URI 中</p><p><img src="https://assets.adunm.top/typora/blog/202301161258605.webp?x-oss-process=style/sy" alt=""></p><p>返回E5续订</p><p>新建应用</p><p>把刚才复制<strong>应用程序(客户端)ID、客户端密码</strong> <strong>、租户ID</strong> 填入</p><p><img src="https://assets.adunm.top/typora/blog/202301161258617.webp?x-oss-process=style/sy" alt=""></p><p>此时会跳转到 microsoftonline Auth2.0授权页面，在这里请注意使用同一个域下的空账号(子账号)进行授权。</p><p>新建子账号一直默认就好了，这里不做演示</p><p><img src="https://assets.adunm.top/typora/blog/202301161258018.webp?x-oss-process=style/sy"  /></p><p>授权成功后过几个小时打开<a href="https://e5.qyi.io/">续订E5</a>点击 日志 显示成功</p><p><img src="https://assets.adunm.top/typora/blog/202301161259667.webp?x-oss-process=style/sy" alt=""></p><h3 id="三个月后。。。"><a href="#三个月后。。。" class="headerlink" title="三个月后。。。"></a>三个月后。。。</h3><p><img src="https://assets.adunm.top/typora/blog/202301082038924.webp?x-oss-process=style/sy" alt=""></p><h4 id="有问题欢迎到评论区讨论"><a href="#有问题欢迎到评论区讨论" class="headerlink" title="有问题欢迎到评论区讨论"></a>有问题欢迎到评论区讨论</h4>]]></content>
+      
+      
+      <categories>
+          
+          <category> Office </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 🪪 Office </tag>
             
         </tags>
       
